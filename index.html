@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <title>Lovail | Your Private Digital Sanctuary</title>
+    <meta name="description"
+        content="Lovail is the ultimate private digital sanctuary for couples. Share heartbeats in real-time with Love Pulse, matching intimate desires with The Matcher, and preserve moments forever.">
+    <meta name="keywords"
+        content="couples app, relationship app, private messaging, heart rate sharing, love pulse, digital time capsule, intimacy app">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lovail.com/">
+    <meta property="og:title" content="Lovail | Your Private Digital Sanctuary">
+    <meta property="og:description"
+        content="The intimate space where your journey together is celebrated every day. Reconnect through shared heartbeats and private memories.">
+    <meta property="og:image" content="https://lovail.com/assets/og-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://lovail.com/">
+    <meta property="twitter:title" content="Lovail | Your Private Digital Sanctuary">
+    <meta property="twitter:description"
+        content="Share heartbeats in real-time and match intimate desires in your private couple sanctuary.">
+    <meta property="twitter:image" content="https://lovail.com/assets/og-image.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'dancing': ['Dancing Script', 'cursive'],
+                        'playfair': ['Playfair Display', 'serif'],
+                        'outfit': ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        rose: {
+                            50: '#fff1f2',
+                            100: '#ffe4e6',
+                            200: '#fecdd3',
+                            300: '#fda4af',
+                            400: '#fb7185',
+                            500: '#ff0080', // Exact App Rose
+                            600: '#e11d48',
+                            700: '#be123c',
+                            800: '#9f1239',
+                            900: '#881337',
+                        },
+                        amethyst: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            200: '#ddd6fe',
+                            300: '#c4b5fd',
+                            400: '#a78bfa',
+                            500: '#8b5cf6', // App Purple-ish
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            800: '#5b21b6',
+                            900: '#4c1d95',
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-delayed': 'float 6s ease-in-out 3s infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'gradient': 'gradient 15s ease infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        gradient: {
+                            '0%, 100%': { backgroundPosition: '0% 50%' },
+                            '50%': { backgroundPosition: '100% 50%' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="font-outfit antialiased bg-slate-50 dark:bg-slate-950 transition-colors duration-300 overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 py-4">
+        <div class="max-w-7xl mx-auto">
+            <div
+                class="glass-card rounded-full px-6 py-3 flex items-center justify-between backdrop-blur-xl bg-white/70 dark:bg-slate-900/70 border border-rose-200/30 dark:border-amethyst-500/20 shadow-lg shadow-rose-500/5 dark:shadow-amethyst-500/10">
+                <div class="flex items-center gap-2">
+                    <img src="assets/logo.png" alt="Lovail Logo" class="w-8 h-8">
+                    <span
+                        class="font-dancing text-2xl font-bold bg-gradient-to-r from-rose-600 to-amethyst-600 dark:from-rose-400 dark:to-amethyst-400 bg-clip-text text-transparent">Lovail</span>
+                </div>
+
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#features"
+                        class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-rose-600 dark:hover:text-rose-400 transition-colors">Features</a>
+                    <a href="#sanctuary"
+                        class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-rose-600 dark:hover:text-rose-400 transition-colors">Sanctuary</a>
+                    <a href="#privacy"
+                        class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-rose-600 dark:hover:text-rose-400 transition-colors">Privacy</a>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <button id="theme-toggle"
+                        class="p-2 rounded-full hover:bg-rose-100 dark:hover:bg-slate-800 transition-colors"
+                        aria-label="Toggle theme">
+                        <i data-lucide="sun" class="w-5 h-5 hidden dark:block text-amber-400"></i>
+                        <i data-lucide="moon" class="w-5 h-5 block dark:hidden text-slate-600"></i>
+                    </button>
+                    <button
+                        class="hidden sm:block px-6 py-2 bg-gradient-to-r from-rose-500 to-amethyst-600 hover:from-rose-600 hover:to-amethyst-700 text-white text-sm font-semibold rounded-full shadow-lg shadow-rose-500/25 transition-all hover:scale-105">
+                        Download Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center pt-20 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <!-- Background Elements -->
+        <div
+            class="absolute inset-0 bg-gradient-to-br from-rose-50 via-white to-amethyst-50 dark:from-slate-950 dark:via-purple-950/20 dark:to-slate-950 animate-gradient bg-[length:200%_200%]">
+        </div>
+        <div
+            class="absolute top-0 right-0 w-96 h-96 bg-rose-300/30 dark:bg-rose-600/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2">
+        </div>
+        <div
+            class="absolute bottom-0 left-0 w-96 h-96 bg-amethyst-300/30 dark:bg-amethyst-600/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2">
+        </div>
+
+        <div class="relative max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+            <!-- Left Content -->
+            <div class="space-y-8 text-center lg:text-left">
+                <div
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card bg-rose-100/50 dark:bg-rose-900/30 border border-rose-200/50 dark:border-rose-500/30">
+                    <i data-lucide="sparkles" class="w-4 h-4 text-rose-500 dark:text-rose-400"></i>
+                    <span class="text-sm font-medium text-rose-700 dark:text-rose-300">Private. Intimate. Yours.</span>
+                </div>
+
+                <h1 class="font-playfair text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight">
+                    <span class="block text-slate-900 dark:text-white">Your Private</span>
+                    <span
+                        class="block bg-gradient-to-r from-rose-600 via-rose-500 to-amethyst-600 dark:from-rose-400 dark:via-rose-300 dark:to-amethyst-400 bg-clip-text text-transparent mt-2">Digital
+                        Sanctuary</span>
+                </h1>
+
+                <p
+                    class="text-lg sm:text-xl text-slate-600 dark:text-slate-300 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                    The intimate space where your journey together is celebrated every day. A digital haven crafted
+                    exclusively for the two of you.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    <a href="#"
+                        class="group relative px-5 py-2.5 bg-black text-white rounded-xl flex items-center gap-3 transition-all hover:scale-105 hover:shadow-xl border border-white/10 shadow-black/20">
+                        <svg viewBox="0 0 384 512" class="w-6 h-6 fill-current">
+                            <path
+                                d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z" />
+                        </svg>
+                        <div class="text-left">
+                            <p class="text-[8px] uppercase font-bold tracking-widest opacity-80">Download on the</p>
+                            <p class="text-base font-bold leading-none">App Store</p>
+                        </div>
+                    </a>
+                    <a href="#"
+                        class="group relative px-5 py-2.5 bg-black text-white rounded-xl flex items-center gap-3 transition-all hover:scale-105 hover:shadow-xl border border-white/10 shadow-black/20">
+                        <svg viewBox="0 0 512 512" class="w-6 h-6">
+                            <path fill="#00A1F1"
+                                d="M43.1,10.2c-3.5,3.7-5.5,9.6-5.5,17.4v454.1c0,7.8,2,13.7,5.5,17.4l1.3,1.3l252.1-252.1v-5.9L43.1,10.2z" />
+                            <path fill="#EA4335"
+                                d="M380.2,347.8l-86.7-86.7L41.4,513.2c10.4,5.9,27.4,5.1,47.5-6.3L380.2,347.8z" />
+                            <path fill="#FBBC04"
+                                d="M498.1,281.2l-117.9,66.9l-1.3,0.7l-85.4-85.4l85.4-85.4l1.3,0.7l117.9,66.9C523.5,243.1,523.5,266.8,498.1,281.2z" />
+                            <path fill="#34A853"
+                                d="M380.2,164.2L88.9,1.3C68.8-10.1,51.8-9.3,41.4-3.4L293.5,248.7L380.2,164.2z" />
+                        </svg>
+                        <div class="text-left">
+                            <p class="text-[8px] uppercase font-bold tracking-widest opacity-80">GET IT ON</p>
+                            <p class="text-base font-bold leading-none">Google Play</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="flex items-center justify-center lg:justify-start gap-6 pt-4">
+                    <div class="flex -space-x-3">
+                        <img src="https://static.photos/people/200x200/1" alt="Couple"
+                            class="w-10 h-10 rounded-full border-2 border-white dark:border-slate-800 object-cover">
+                        <img src="https://static.photos/people/200x200/2" alt="Couple"
+                            class="w-10 h-10 rounded-full border-2 border-white dark:border-slate-800 object-cover">
+                        <img src="https://static.photos/people/200x200/3" alt="Couple"
+                            class="w-10 h-10 rounded-full border-2 border-white dark:border-slate-800 object-cover">
+                        <div
+                            class="w-10 h-10 rounded-full border-2 border-white dark:border-slate-800 bg-rose-100 dark:bg-rose-900 flex items-center justify-center text-xs font-bold text-rose-600 dark:text-rose-400">
+                            +2k</div>
+                    </div>
+                    <p class="text-sm text-slate-600 dark:text-slate-400">
+                        <span class="font-semibold text-slate-900 dark:text-white">Lovail is officially live.</span>
+                        Join thousands of couples and start building your sanctuary today.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Right Content - 3D Screenshots -->
+            <div class="relative h-[800px] hidden lg:block perspective-1000">
+                <!-- Screenshot 1 - Main (Light Mode) -->
+                <div class="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[480px] z-30">
+                    <div class="animate-float">
+                        <img src="assets/LIGHTMODE.png" alt="Lovail Light Mode"
+                            class="w-full h-auto drop-shadow-2xl transform rotateY(-10deg) rotateX(2deg)">
+                    </div>
+                </div>
+
+                <!-- Screenshot 2 - Back Left (Dark Mode) -->
+                <div class="absolute top-[40%] left-1/4 -translate-y-1/2 w-[380px] z-20 opacity-60">
+                    <div class="animate-float-delayed">
+                        <img src="assets/DARKMODE.png" alt="Lovail Dark Mode"
+                            class="w-full h-auto drop-shadow-xl transform -rotateY(15deg) rotateX(2deg) scale-90">
+                    </div>
+                </div>
+
+                <!-- Decorative Elements -->
+                <div
+                    class="absolute top-20 right-10 w-20 h-20 glass-card bg-rose-400/20 rounded-full flex items-center justify-center animate-pulse-slow">
+                    <img src="assets/logo.png" alt="Lovail Logo" class="w-10 h-10">
+                </div>
+                <div
+                    class="absolute bottom-32 left-10 w-16 h-16 glass-card bg-amethyst-400/20 rounded-full flex items-center justify-center">
+                    <i data-lucide="infinite" class="w-6 h-6 text-amethyst-600 dark:text-amethyst-400"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Mosaic Section -->
+    <section id="features" class="relative py-24 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-900">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="font-dancing text-4xl sm:text-5xl text-slate-900 dark:text-white mb-4">Crafted for Intimacy
+                </h2>
+                <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">Every feature designed to bring you
+                    closer, celebrating your unique bond in a space that's exclusively yours.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Love Pulse -->
+                <div
+                    class="feature-card group relative overflow-hidden rounded-3xl p-8 glass-card bg-gradient-to-br from-rose-50 to-white dark:from-slate-800 dark:to-slate-900 border border-rose-200/50 dark:border-rose-500/20 hover:border-rose-400/50 transition-all duration-500">
+                    <div
+                        class="absolute top-0 right-0 w-32 h-32 bg-rose-400/10 rounded-full blur-2xl group-hover:bg-rose-400/20 transition-all">
+                    </div>
+                    <div class="relative z-10">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-gradient-to-br from-rose-400 to-rose-600 flex items-center justify-center mb-6 shadow-lg shadow-rose-500/30 group-hover:scale-110 transition-transform">
+                            <i data-lucide="activity" class="w-7 h-7 text-white"></i>
+                        </div>
+                        <h3 class="font-playfair text-2xl text-slate-900 dark:text-white mb-3">Love Pulse</h3>
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">Feel your partner's heartbeat
+                            in real-time. A gentle haptic pulse that bridges the distance, no matter where you are.</p>
+                        <div class="flex items-center gap-2 text-rose-600 dark:text-rose-400 text-sm font-medium">
+                            <span>Live Connection</span>
+                            <i data-lucide="arrow-right"
+                                class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Date Night Scratcher -->
+                <div
+                    class="feature-card group relative overflow-hidden rounded-3xl p-8 glass-card bg-gradient-to-br from-amethyst-50 to-white dark:from-slate-800 dark:to-slate-900 border border-amethyst-200/50 dark:border-amethyst-500/20 hover:border-amethyst-400/50 transition-all duration-500">
+                    <div
+                        class="absolute top-0 right-0 w-32 h-32 bg-amethyst-400/10 rounded-full blur-2xl group-hover:bg-amethyst-400/20 transition-all">
+                    </div>
+                    <div class="relative z-10">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-gradient-to-br from-amethyst-400 to-amethyst-600 flex items-center justify-center mb-6 shadow-lg shadow-amethyst-500/30 group-hover:scale-110 transition-transform">
+                            <i data-lucide="ticket" class="w-7 h-7 text-white"></i>
+                        </div>
+                        <h3 class="font-playfair text-2xl text-slate-900 dark:text-white mb-3">Date Night Scratcher</h3>
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">Add a spark of mystery to
+                            your evenings. Scratch to reveal Surprise dates, spontaneous adventures, and curated
+                            romantic plans.</p>
+                        <div
+                            class="flex items-center gap-2 text-amethyst-600 dark:text-amethyst-400 text-sm font-medium">
+                            <span>Reveal Surprises</span>
+                            <i data-lucide="arrow-right"
+                                class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- The Matcher -->
+                <div
+                    class="feature-card group relative overflow-hidden rounded-3xl p-8 glass-card bg-gradient-to-br from-rose-50 to-amethyst-50 dark:from-slate-800 dark:to-slate-900 border border-rose-200/50 dark:border-rose-500/20 hover:border-rose-400/50 transition-all duration-500">
+                    <div
+                        class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-rose-400/10 to-amethyst-400/10 rounded-full blur-2xl group-hover:from-rose-400/20 group-hover:to-amethyst-400/20 transition-all">
+                    </div>
+                    <div class="relative z-10">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-gradient-to-br from-rose-400 to-amethyst-600 flex items-center justify-center mb-6 shadow-lg shadow-rose-500/30 group-hover:scale-110 transition-transform">
+                            <i data-lucide="scale" class="w-7 h-7 text-white"></i>
+                        </div>
+                        <h3 class="font-playfair text-2xl text-slate-900 dark:text-white mb-3">The Matcher</h3>
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">The ultimate decision maker.
+                            Swipe through movies, dinners, or getaways together. When you both swipe right, it's a
+                            match!</p>
+                        <div class="flex items-center gap-2 text-rose-600 dark:text-rose-400 text-sm font-medium">
+                            <span>Decide Together</span>
+                            <i data-lucide="arrow-right"
+                                class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Time Capsule -->
+                <div
+                    class="feature-card group relative overflow-hidden rounded-3xl p-8 glass-card bg-gradient-to-br from-slate-50 to-white dark:from-slate-800 dark:to-slate-900 border border-slate-200/50 dark:border-slate-500/20 hover:border-slate-400/50 transition-all duration-500 md:col-span-2 lg:col-span-1">
+                    <div
+                        class="absolute top-0 right-0 w-32 h-32 bg-slate-400/10 rounded-full blur-2xl group-hover:bg-slate-400/20 transition-all">
+                    </div>
+                    <div class="relative z-10">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-gradient-to-br from-slate-400 to-slate-600 flex items-center justify-center mb-6 shadow-lg shadow-slate-500/30 group-hover:scale-110 transition-transform">
+                            <i data-lucide="archive" class="w-7 h-7 text-white"></i>
+                        </div>
+                        <h3 class="font-playfair text-2xl text-slate-900 dark:text-white mb-3">Time Capsule</h3>
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">Your digital archive of love.
+                            Securely store photos, notes, and milestones. Revisit your journey together through the
+                            timeline of your relationship.</p>
+                        <div class="flex items-center gap-2 text-slate-600 dark:text-slate-400 text-sm font-medium">
+                            <span>Preserve Memories</span>
+                            <i data-lucide="arrow-right"
+                                class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Privacy Shield -->
+                <div id="privacy"
+                    class="feature-card group relative overflow-hidden rounded-3xl p-8 glass-card bg-gradient-to-br from-emerald-50 to-white dark:from-slate-800 dark:to-slate-900 border border-emerald-200/50 dark:border-emerald-500/20 hover:border-emerald-400/50 transition-all duration-500 md:col-span-2">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-r from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="relative z-10 flex flex-col md:flex-row gap-6 items-start md:items-center">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center mb-6 md:mb-0 shadow-lg shadow-emerald-500/30 group-hover:scale-110 transition-transform shrink-0">
+                            <i data-lucide="shield-check" class="w-7 h-7 text-white"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-playfair text-2xl text-slate-900 dark:text-white mb-3">Privacy Fortress</h3>
+                            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">Military-grade
+                                encryption. Zero data mining. No ads, no tracking, no third parties. Your sanctuary is
+                                truly yours—locked behind biometric authentication and military-grade cloud encryption.
+                            </p>
+                            <div class="flex flex-wrap gap-3">
+                                <span
+                                    class="px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-xs font-medium flex items-center gap-1">
+                                    <i data-lucide="lock" class="w-3 h-3"></i> E2E Encrypted
+                                </span>
+                                <span
+                                    class="px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-xs font-medium flex items-center gap-1">
+                                    <i data-lucide="eye-off" class="w-3 h-3"></i> No Data Mining
+                                </span>
+                                <span
+                                    class="px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-xs font-medium flex items-center gap-1">
+                                    <i data-lucide="fingerprint" class="w-3 h-3"></i> Biometric Lock
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Demo Section -->
+    <section id="sanctuary"
+        class="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-b from-white to-rose-50 dark:from-slate-900 dark:to-slate-950">
+        <div
+            class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23f43f5e%22%20fill-opacity%3D%220.05%22%3E%3Cpath%20d%3D%22M36%2034v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6%2034v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6%204V0H4v4H0v2h4v4h2V6h4V4H6z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-50">
+        </div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1">
+                    <div class="relative">
+                        <!-- Interactive Widget -->
+                        <div
+                            class="glass-card bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl rounded-3xl p-8 border border-rose-200/50 dark:border-amethyst-500/20 shadow-2xl">
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-3 h-3 rounded-full bg-rose-500 animate-pulse"></div>
+                                    <span class="text-sm font-medium text-slate-600 dark:text-slate-300">Live
+                                        Connection</span>
+                                </div>
+                                <span class="text-xs text-slate-400">Just now</span>
+                            </div>
+
+                            <div class="flex items-center justify-center py-8">
+                                <div class="relative">
+                                    <div
+                                        class="w-32 h-32 rounded-full bg-gradient-to-br from-rose-400 to-amethyst-600 flex items-center justify-center shadow-xl shadow-rose-500/30">
+                                        <img src="assets/logo.png" alt="Lovail Logo"
+                                            class="w-16 h-16 animate-pulse brightness-0 invert">
+                                    </div>
+                                    <div
+                                        class="absolute -bottom-2 -right-2 w-12 h-12 rounded-full bg-white dark:bg-slate-700 flex items-center justify-center shadow-lg border border-rose-100 dark:border-slate-600">
+                                        <span class="text-sm font-bold text-rose-600 dark:text-rose-400">84</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="text-center mb-6">
+                                <p class="font-dancing text-2xl text-slate-900 dark:text-white mb-1">Connected with
+                                    Your Partner</p>
+                                <p class="text-sm text-slate-500 dark:text-slate-400">Live Beats • Feeling Loved</p>
+                            </div>
+
+                            <div class="grid grid-cols-3 gap-3">
+                                <button
+                                    class="p-3 rounded-xl bg-rose-100 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 hover:bg-rose-200 dark:hover:bg-rose-900/50 transition-colors flex flex-col items-center gap-1">
+                                    <i data-lucide="send" class="w-5 h-5"></i>
+                                    <span class="text-xs">Nudge</span>
+                                </button>
+                                <button
+                                    class="p-3 rounded-xl bg-amethyst-100 dark:bg-amethyst-900/30 text-amethyst-600 dark:text-amethyst-400 hover:bg-amethyst-200 dark:hover:bg-amethyst-900/50 transition-colors flex flex-col items-center gap-1">
+                                    <i data-lucide="message-circle" class="w-5 h-5"></i>
+                                    <span class="text-xs"> Whisper</span>
+                                </button>
+                                <button
+                                    class="p-3 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors flex flex-col items-center gap-1">
+                                    <i data-lucide="phone" class="w-5 h-5"></i>
+                                    <span class="text-xs">Call</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Floating Cards -->
+                        <div
+                            class="absolute -top-6 -right-6 glass-card bg-white/90 dark:bg-slate-800/90 p-4 rounded-2xl shadow-xl border border-rose-200/30 animate-float hidden sm:block">
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="image" class="w-8 h-8 text-rose-500"></i>
+                                <div>
+                                    <p class="text-xs text-slate-500">New Memory</p>
+                                    <p class="text-sm font-semibold text-slate-800 dark:text-white">Paris Trip '24</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="order-1 lg:order-2 space-y-6">
+                    <h2 class="font-playfair text-4xl sm:text-5xl text-slate-900 dark:text-white leading-tight">
+                        Feel Their Presence,<br>
+                        <span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-amethyst-600">Anywhere
+                            in the World</span>
+                    </h2>
+                    <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+                        Lovail transcends distance. When you miss them, feel their heartbeat. When you're apart, share a
+                        moment. Our biometric integration creates a tangible sense of presence, turning digital
+                        connection into physical sensation.
+                    </p>
+
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <div
+                                class="w-6 h-6 rounded-full bg-rose-100 dark:bg-rose-900/30 flex items-center justify-center shrink-0 mt-0.5">
+                                <i data-lucide="check" class="w-4 h-4 text-rose-600 dark:text-rose-400"></i>
+                            </div>
+                            <span class="text-slate-700 dark:text-slate-300">Haptic feedback mimics their touch</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div
+                                class="w-6 h-6 rounded-full bg-rose-100 dark:bg-rose-900/30 flex items-center justify-center shrink-0 mt-0.5">
+                                <i data-lucide="check" class="w-4 h-4 text-rose-600 dark:text-rose-400"></i>
+                            </div>
+                            <span class="text-slate-700 dark:text-slate-300">Synchronized breathing exercises</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div
+                                class="w-6 h-6 rounded-full bg-rose-100 dark:bg-rose-900/30 flex items-center justify-center shrink-0 mt-0.5">
+                                <i data-lucide="check" class="w-4 h-4 text-rose-600 dark:text-rose-400"></i>
+                            </div>
+                            <span class="text-slate-700 dark:text-slate-300">Instant mood sharing with color
+                                auras</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="relative py-24 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center">
+            <div
+                class="glass-card bg-gradient-to-br from-rose-500/10 to-amethyst-600/10 dark:from-rose-500/20 dark:to-amethyst-600/20 backdrop-blur-xl rounded-3xl p-12 border border-rose-200/50 dark:border-amethyst-500/30">
+                <img src="assets/logo.png" alt="Lovail Logo" class="w-16 h-16 mx-auto mb-6">
+                <h2 class="font-playfair text-4xl sm:text-5xl text-slate-900 dark:text-white mb-4">Begin Your Sanctuary
+                </h2>
+                <p class="text-lg text-slate-600 dark:text-slate-300 mb-8 max-w-xl mx-auto">
+                    Take the first step towards a deeper connection. Download Lovail now and begin your journey
+                    together.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                    <a href="#"
+                        class="group relative px-10 py-5 bg-black text-white rounded-2xl flex items-center gap-5 transition-all hover:scale-105 hover:shadow-2xl border border-white/10 shadow-black/40">
+                        <svg viewBox="0 0 384 512" class="w-10 h-10 fill-current">
+                            <path
+                                d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z" />
+                        </svg>
+                        <div class="text-left">
+                            <p class="text-[12px] uppercase font-bold tracking-[0.2em] opacity-80">Download on the</p>
+                            <p class="text-2xl font-bold leading-none mt-1">App Store</p>
+                        </div>
+                    </a>
+                    <a href="#"
+                        class="group relative px-10 py-5 bg-black text-white rounded-2xl flex items-center gap-5 transition-all hover:scale-105 hover:shadow-2xl border border-white/10 shadow-black/40">
+                        <svg viewBox="0 0 512 512" class="w-10 h-10">
+                            <path fill="#00A1F1"
+                                d="M43.1,10.2c-3.5,3.7-5.5,9.6-5.5,17.4v454.1c0,7.8,2,13.7,5.5,17.4l1.3,1.3l252.1-252.1v-5.9L43.1,10.2z" />
+                            <path fill="#EA4335"
+                                d="M380.2,347.8l-86.7-86.7L41.4,513.2c10.4,5.9,27.4,5.1,47.5-6.3L380.2,347.8z" />
+                            <path fill="#FBBC04"
+                                d="M498.1,281.2l-117.9,66.9l-1.3,0.7l-85.4-85.4l85.4-85.4l1.3,0.7l117.9,66.9C523.5,243.1,523.5,266.8,498.1,281.2z" />
+                            <path fill="#34A853"
+                                d="M380.2,164.2L88.9,1.3C68.8-10.1,51.8-9.3,41.4-3.4L293.5,248.7L380.2,164.2z" />
+                        </svg>
+                        <div class="text-left">
+                            <p class="text-[12px] uppercase font-bold tracking-[0.2em] opacity-80">GET IT ON</p>
+                            <p class="text-2xl font-bold leading-none mt-1">Google Play</p>
+                        </div>
+                    </a>
+                </div>
+
+                <p class="text-sm text-slate-500 dark:text-slate-400">No spam, ever. Unsubscribe anytime.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+        class="relative bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-8">
+            <div class="md:col-span-1">
+                <div class="flex items-center gap-2 mb-4">
+                    <img src="assets/logo.png" alt="Lovail Logo" class="w-8 h-8">
+                    <span class="font-dancing text-2xl font-bold text-slate-900 dark:text-white">Lovail</span>
+                </div>
+                <p class="text-slate-600 dark:text-slate-400 text-sm mb-6">
+                    A private digital sanctuary for modern couples.
+                </p>
+                <div class="flex gap-4">
+                    <a href="#"
+                        class="w-10 h-10 rounded-full glass-card bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-rose-100 dark:hover:bg-rose-900/30 hover:text-rose-600 dark:hover:text-rose-400 transition-colors">
+                        <i data-lucide="twitter" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#"
+                        class="w-10 h-10 rounded-full glass-card bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-rose-100 dark:hover:bg-rose-900/30 hover:text-rose-600 dark:hover:text-rose-400 transition-colors">
+                        <i data-lucide="instagram" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="font-semibold text-slate-900 dark:text-white mb-4">Product</h4>
+                <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                    <li><a href="#features"
+                            class="hover:text-rose-600 dark:hover:text-rose-400 transition-colors">Features</a></li>
+                    <li><a href="#privacy"
+                            class="hover:text-rose-600 dark:hover:text-rose-400 transition-colors">Privacy</a></li>
+                    <li><a href="#sanctuary"
+                            class="hover:text-rose-600 dark:hover:text-rose-400 transition-colors">Sanctuary</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-semibold text-slate-900 dark:text-white mb-4">Support</h4>
+                <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                    <li><a href="mailto:contact@lovail.com"
+                            class="hover:text-rose-600 dark:hover:text-rose-400 transition-colors">Contact Us</a></li>
+                    <li><a href="privacy.html"
+                            class="hover:text-rose-600 dark:hover:text-rose-400 transition-colors">Privacy Policy</a>
+                    </li>
+                    <li><a href="terms.html"
+                            class="hover:text-rose-600 dark:hover:text-rose-400 transition-colors">Terms of Service</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-semibold text-slate-900 dark:text-white mb-4">Get the App</h4>
+                <div class="flex flex-col gap-3">
+                    <a href="#"
+                        class="flex items-center gap-2 p-3 rounded-xl bg-black border border-white/10 hover:border-rose-400/50 transition-colors group shadow-lg">
+                        <svg viewBox="0 0 384 512"
+                            class="w-5 h-5 fill-white group-hover:scale-110 transition-transform">
+                            <path
+                                d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z" />
+                        </svg>
+                        <span class="text-xs font-semibold text-slate-300 group-hover:text-white">App Store</span>
+                    </a>
+                    <a href="#"
+                        class="flex items-center gap-2 p-3 rounded-xl bg-black border border-white/10 hover:border-amethyst-400/50 transition-colors group shadow-lg">
+                        <svg viewBox="0 0 512 512" class="w-5 h-5 group-hover:scale-110 transition-transform">
+                            <path fill="#00A1F1"
+                                d="M43.1,10.2c-3.5,3.7-5.5,9.6-5.5,17.4v454.1c0,7.8,2,13.7,5.5,17.4l1.3,1.3l252.1-252.1v-5.9L43.1,10.2z" />
+                            <path fill="#EA4335"
+                                d="M380.2,347.8l-86.7-86.7L41.4,513.2c10.4,5.9,27.4,5.1,47.5-6.3L380.2,347.8z" />
+                            <path fill="#FBBC04"
+                                d="M498.1,281.2l-117.9,66.9l-1.3,0.7l-85.4-85.4l85.4-85.4l1.3,0.7l117.9,66.9C523.5,243.1,523.5,266.8,498.1,281.2z" />
+                            <path fill="#34A853"
+                                d="M380.2,164.2L88.9,1.3C68.8-10.1,51.8-9.3,41.4-3.4L293.5,248.7L380.2,164.2z" />
+                        </svg>
+                        <span class="text-xs font-semibold text-slate-300 group-hover:text-white">Google Play</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div
+            class="max-w-7xl mx-auto mt-12 pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-sm text-slate-500 dark:text-slate-400">© 2026 Lovail. All rights reserved.</p>
+            <div class="flex gap-6 text-sm text-slate-500 dark:text-slate-400">
+                <a href="privacy.html" class="hover:text-slate-700 dark:hover:text-slate-300">Privacy Policy</a>
+                <a href="terms.html" class="hover:text-slate-700 dark:hover:text-slate-300">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
