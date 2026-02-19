@@ -13,5 +13,16 @@
             "source": "/__/auth/:path*",
             "destination": "https://lovail.firebaseapp.com/__/auth/:path*"
         }
+    ],
+    "headers": [
+        {
+            "source": "/(.*)",
+            "headers": [
+                {
+                    "key": "X-Debug-Config-Loaded",
+                    "value": "true"
+                }
+            ]
+        }
     ]
 }
