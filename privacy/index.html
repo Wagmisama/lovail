@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../assets/logo.png">
+    <title>Privacy Policy | Lovail</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'dancing': ['Dancing Script', 'cursive'],
+                        'playfair': ['Playfair Display', 'serif'],
+                        'outfit': ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        rose: {
+                            400: '#fb7185',
+                            500: '#f43f5e',
+                            600: '#e11d48',
+                        },
+                        amethyst: {
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body class="font-outfit antialiased bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 px-4 py-4">
+        <div class="max-w-7xl mx-auto">
+            <div
+                class="glass-card rounded-full px-6 py-3 flex items-center justify-between bg-white/70 dark:bg-slate-900/70 border border-rose-200/30 dark:border-amethyst-500/20 shadow-lg">
+                <div class="flex items-center gap-2">
+                    <img src="../assets/logo.png" alt="Lovail Logo" class="w-8 h-8">
+                    <span
+                        class="font-dancing text-2xl font-bold bg-gradient-to-r from-rose-600 to-amethyst-600 dark:from-rose-400 dark:to-amethyst-400 bg-clip-text text-transparent">Lovail</span>
+                </div>
+                <a href="/"
+                    class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-rose-600 dark:hover:text-rose-400 transition-colors">Back
+                    to Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <section class="pt-32 pb-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+        <div
+            class="glass-card bg-white/80 dark:bg-slate-900/80 rounded-3xl p-8 sm:p-12 border border-rose-200/50 dark:border-amethyst-500/20 shadow-xl">
+            <h1 class="font-playfair text-4xl font-bold text-slate-900 dark:text-white mb-8">Privacy Policy</h1>
+
+            <div class="prose dark:prose-invert prose-slate max-w-none space-y-6 text-slate-600 dark:text-slate-300">
+                <p class="text-sm">Effective Date: February 13, 2026</p>
+
+                <section>
+                    <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-3">1. Intimacy and Privacy by Design
+                    </h2>
+                    <p>Lovail is designed as a private sanctuary for couples. We believe your intimate moments should
+                        stay intimate. We do not sell your personal data, and we do not use it for advertising.</p>
+                </section>
+
+                <section>
+                    <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-3">2. Data We Collect & Protect</h2>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li><strong>Account Information:</strong> Name, email, and gender to personalize your
+                            experience and sync with your partner.</li>
+                        <li><strong>The Sanctuary Content:</strong> Photos, memories, and messages shared between you
+                            and your partner.
+                            These are stored with end-to-end encryption to ensure 100% privacy.</li>
+                        <li><strong>Love Pulse (Biometrics):</strong> Heart rate data used for real-time mood sharing.
+                            This data is processed locally and never stored on our servers in a permanent format unless
+                            used for specific health history features you opt into.</li>
+                        <li><strong>The Matcher:</strong> Your private preferences for Date Nights and intimacy are
+                            stored
+                            securely and only revealed when both partners match.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-3">3. Technology & Security</h2>
+                    <p>We use industry-leading services to ensure your digital sanctuary remains impregnable:</p>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li><strong>Infrastructure:</strong> Secure authentication and real-time syncing via Firebase.
+                        </li>
+                        <li><strong>Encrypted Storage:</strong> All media is stored securely using advanced encryption
+                            protocols.</li>
+                        <li><strong>Biometric Lock:</strong> The app is secured via FaceID/Fingerprint locally on your
+                            device.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-3">4. Our Commitment</h2>
+                    <p>Lovail is built on the foundation of trust. We never sell your data to third parties, we do not
+                        track your location for advertising, and we provide tools for you to wipe your shared sanctuary
+                        instantly if you ever choose to do so.</p>
+                </section>
+
+                <section>
+                    <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-3">5. Contact Us</h2>
+                    <p>If you have questions about your privacy, contact our team at <a href="mailto:contact@lovail.com"
+                            class="text-rose-600 hover:underline">contact@lovail.com</a>.</p>
+                </section>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 border-t border-slate-200 dark:border-slate-800 text-center text-sm text-slate-500">
+        <p>© 2026 Lovail. All rights reserved.</p>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>
