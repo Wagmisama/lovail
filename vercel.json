@@ -1,8 +1,9 @@
 {
+    "cleanUrls": true,
     "rewrites": [
         {
             "source": "/__/auth/:path*",
-            "destination": "https://test-2047b.firebaseapp.com/__/auth/:path*"
+            "destination": "https://lovail.firebaseapp.com/__/auth/:path*"
         }
     ]
 }
