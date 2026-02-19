@@ -1,18 +1,22 @@
 {
     "cleanUrls": true,
     "trailingSlash": false,
-    "rewrites": [
+    "routes": [
         {
-            "source": "/privacy",
-            "destination": "/privacy.html"
+            "src": "/privacy",
+            "dest": "/privacy.html"
         },
         {
-            "source": "/terms",
-            "destination": "/terms.html"
+            "src": "/terms",
+            "dest": "/terms.html"
         },
         {
-            "source": "/__/auth/:path*",
-            "destination": "https://lovail.firebaseapp.com/__/auth/:path*"
+            "src": "/__/auth/(.*)",
+            "dest": "https://lovail.firebaseapp.com/__/auth/$1"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/$1"
         }
     ]
 }
