@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <title>Delete Account | Lovail</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'dancing': ['Dancing Script', 'cursive'],
+                        'playfair': ['Playfair Display', 'serif'],
+                        'outfit': ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        rose: {
+                            400: '#fb7185',
+                            500: '#f43f5e',
+                            600: '#e11d48',
+                        },
+                        amethyst: {
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="font-outfit antialiased bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 px-4 py-4">
+        <div class="max-w-7xl mx-auto">
+            <div
+                class="glass-card rounded-full px-6 py-3 flex items-center justify-between bg-white/70 dark:bg-slate-900/70 border border-rose-200/30 dark:border-amethyst-500/20 shadow-lg">
+                <div class="flex items-center gap-2">
+                    <img src="assets/logo.png" alt="Lovail Logo" class="w-8 h-8">
+                    <span
+                        class="font-dancing text-2xl font-bold bg-gradient-to-r from-rose-600 to-amethyst-600 dark:from-rose-400 dark:to-amethyst-400 bg-clip-text text-transparent">Lovail</span>
+                </div>
+                <a href="/"
+                    class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-rose-600 dark:hover:text-rose-400 transition-colors">Back
+                    to Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <section class="pt-32 pb-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+        <div
+            class="glass-card bg-white/80 dark:bg-slate-900/80 rounded-3xl p-8 sm:p-12 border border-rose-200/50 dark:border-amethyst-500/20 shadow-xl">
+            <h1 class="font-playfair text-4xl font-bold text-slate-900 dark:text-white mb-8 text-center">Delete Your Lovail Account</h1>
+
+            <div class="prose dark:prose-invert prose-slate max-w-none space-y-6 text-slate-600 dark:text-slate-300">
+                <p class="text-center text-lg">We're sorry to see you go. Below you can find information on how to delete your account and what data will be removed.</p>
+
+                <div class="bg-rose-50 dark:bg-rose-900/10 border border-rose-200 dark:border-rose-500/20 rounded-2xl p-6 my-8">
+                    <h2 class="text-rose-600 dark:text-rose-400 text-xl font-bold mb-4 flex items-center gap-2">
+                        <i data-lucide="alert-triangle" class="w-6 h-6"></i>
+                        What happens when you delete your account?
+                    </h2>
+                    <ul class="list-disc pl-5 space-y-2 text-slate-700 dark:text-slate-300">
+                        <li>Your account profile (name, email, photo) will be permanently deleted.</li>
+                        <li>All shared memories, messages, and milestones in your "Sanctuary" will be wiped.</li>
+                        <li>Your link with your partner will be broken.</li>
+                        <li>This action <strong>cannot be undone</strong>.</li>
+                    </ul>
+                </div>
+
+                <div class="space-y-8">
+                    <section>
+                        <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">How to Delete Your Account</h2>
+                        
+                        <div class="grid gap-6 md:grid-cols-2">
+                            <div class="glass-card p-6 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700">
+                                <h3 class="font-bold text-lg mb-2 flex items-center gap-2">
+                                    <span class="bg-rose-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">1</span>
+                                    In the App (Fastest)
+                                </h3>
+                                <p class="text-sm">Open Lovail, go to <strong>Settings</strong> > <strong>Account</strong> and tap <strong>Delete Account</strong>. Your data is wiped instantly.</p>
+                            </div>
+
+                            <div class="glass-card p-6 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700">
+                                <h3 class="font-bold text-lg mb-2 flex items-center gap-2">
+                                    <span class="bg-rose-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">2</span>
+                                    Via Email
+                                </h3>
+                                <p class="text-sm">If you no longer have the app, email us at <a href="mailto:contact@lovail.com" class="text-rose-600 font-medium">contact@lovail.com</a> from your registered email address.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="text-center pt-8 border-t border-slate-200 dark:border-slate-800">
+                        <p class="mb-6">Need help or have questions before you leave?</p>
+                        <a href="mailto:contact@lovail.com" class="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-rose-500 to-amethyst-500 hover:from-rose-600 hover:to-amethyst-600 text-white font-bold rounded-full transition-all transform hover:scale-105 shadow-lg">
+                            Contact Support
+                        </a>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 border-t border-slate-200 dark:border-slate-800 text-center text-sm text-slate-500">
+        <p>© 2026 Lovail. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>
