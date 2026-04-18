@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.lovail.app",
+      "sha256_cert_fingerprints": [
+        "E9:52:EF:B4:58:25:20:D9:75:0C:42:B1:D4:40:20:7D:C1:2E:D2:44:41:AD:A3:2E:0B:13:8A:E1:0F:EC:C6:91",
+        "B1:1F:B9:D8:3B:11:5D:91:2A:9E:78:9B:CD:F5:BB:A9:A8:26:58:B7:F7:0E:22:BF:19:83:81:BC:A9:81:AE:E4"
+      ]
+    }
+  }
+]
